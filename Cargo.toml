@@ -1,0 +1,15 @@
+# Cargo.toml
+[package]
+name = "pyrs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+pyo3 = "0.22.0"
+
+[lib]
+name = "_lib"  # private module to be nested into Python package,
+               # needs to match the name of the function with the `[#pymodule]` attribute
+path = "rust/lib.rs"
+crate-type = ["cdylib"]  # required for shared library for Python to import from.
+
